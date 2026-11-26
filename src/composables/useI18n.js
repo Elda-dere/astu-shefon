@@ -1,0 +1,276 @@
+import { ref, computed } from 'vue';
+
+const saved = typeof window !== 'undefined' ? window.localStorage.getItem('lang') : null;
+const lang = ref(saved === 'am' ? 'am' : 'en');
+
+const messages = {
+  en: {
+    nav: {
+      brandName: 'ASTU CHIFFON',
+      brandTag: 'Ethiopian Cotton Couture',
+      home: 'Home',
+      process: 'Our Process',
+      dresses: 'Dresses',
+      heritage: 'About Us',
+      contact: 'Contact Us',
+      explore: 'Explore Dresses',
+    },
+    story: {
+      heroEyebrow: 'Astu Chiffon · Ethiopian Cotton',
+      heroTitle1: 'FROM THE EARTH,',
+      heroTitle2: 'WOVEN INTO ART.',
+      heroSub: 'Discover the journey of Ethiopian cotton, craftsmanship, and timeless design.',
+      scrollCue: 'Scroll to transform',
+      stagePrefix: 'Stage',
+      stages: [
+        {
+          eyebrow: 'Stage 01 — Raw Cotton',
+          title: 'IT BEGINS WITH NATURE.',
+          subtitle: 'Natural cotton bolls open and separate into weightless individual fibers.',
+        },
+        {
+          eyebrow: 'Stage 02 — Cotton Processing',
+          title: 'REFINED BY CRAFT.',
+          subtitle: 'Fibers travel across precision rollers and belts into clean aligned strands.',
+        },
+        {
+          eyebrow: 'Stage 03 — Spinning',
+          title: 'EVERY THREAD HAS A STORY.',
+          subtitle: 'Rotating spindles twist delicate cotton fibers into continuous yarn.',
+        },
+        {
+          eyebrow: 'Stage 04 — Weaving',
+          title: 'TRADITION MEETS PRECISION.',
+          subtitle: 'Warp and weft threads interlace in an over-under pattern to form woven shefon.',
+        },
+        {
+          eyebrow: 'Stage 05 — Dress Construction',
+          title: 'CRAFTED INTO SOMETHING TIMELESS.',
+          subtitle: 'Woven textile takes shape into an Ethiopian dress silhouette.',
+        },
+        {
+          eyebrow: 'Stage 06 — The Final Dress Reveal',
+          title: 'ETHIOPIAN HERITAGE. REIMAGINED.',
+          subtitle: 'Scroll to orbit the 3D garment in our studio.',
+        },
+      ],
+    },
+    dresses: {
+      eyebrow: 'Interactive 360° Garment Studio',
+      title1: 'Ethiopian Dress',
+      title2: '3D Archive',
+      intro: 'Watch the continuous 3D rotation, drag left or right to scrub 360°, scroll to zoom, or hover garment zones for tailoring details.',
+      autoOn: 'Auto Spin: On',
+      autoOff: 'Resume Auto Spin',
+      views: { Front: 'Front', Left: 'Left', Back: 'Back', Right: 'Right' },
+      fabricLabel: 'Fabric',
+      embroideryLabel: 'Embroidery',
+      hoverLabel: 'Hover to Inspect Details',
+      dragHint: 'Drag left/right to scrub 360° · Scroll to zoom',
+      habeshaGalleryTitle: 'Habesha Kemis Lookbook',
+      habeshaGallerySub: 'Scrolling left to right · Hover to pause',
+      zones: [
+        { title: 'Neckline', detail: 'Structured square neckline bound with hand-finished cotton trim.' },
+        { title: 'Puff Sleeves', detail: 'Gathered voluminous sleeves with delicate elasticated ruffle cuffs.' },
+        { title: 'Waistband', detail: 'Contoured waist sash anchoring the bodice before releasing the tiers.' },
+        { title: 'Tibeb Hem', detail: 'Three-tier gathered floral skirt with sweeping studio movement.' },
+      ],
+      items: {
+        shefon: {
+          category: 'Shefon Collection',
+          name: 'Shefon Couture Showcase',
+          description: 'Airy Ethiopian cotton-shefon gowns crafted for fluid movement, delicate floral prints, and luminous studio drape.',
+          fabric: 'Featherlight Cotton-Shefon Blend',
+          embroidery: 'Micro-gathered puff sleeves & French-seamed three-tier skirt',
+        },
+        'habesha-kemis': {
+          category: 'Habesha Kemis',
+          name: 'Traditional & Modern Habesha Kemis',
+          description: 'Woven on traditional Ethiopian pit looms from unbleached highland cotton, finished with hand-embroidered tibeb trim along the bodice and hem.',
+          fabric: '100% Organic Ethiopian Shemma Cotton',
+          embroidery: 'Hand-woven diamond tibeb motif in warm sand and charcoal',
+        },
+      },
+    },
+    heritage: {
+      eyebrow: 'About Us · The Story Behind Our Craft',
+      title1: 'Every Thread',
+      title2: 'Has a Story.',
+      subtitle: 'From Ethiopian cotton to contemporary fashion.',
+      p1: 'Behind every garment is a process, a pair of skilled hands, and a story worth telling.',
+      p2: 'Led by Aster, CEO of Chiffon, our vision is to bring the beauty of Ethiopian craftsmanship into contemporary clothing. We work with cotton and carefully selected fabrics to create garments that celebrate quality, creativity, and the value of handmade work.',
+      p3: 'But we believe fashion is about more than the finished dress. That is why we want to take you behind the scenes and show you the entire journey: where our materials come from, how cotton is transformed into fabric, how traditional weaving and garment-making techniques are used, and how each piece gradually becomes a finished garment.',
+      p4: 'We want you to see the hands, the details, the creativity, and the dedication behind what you wear.',
+      mission: 'Our mission is simple: to connect the story of our materials, the beauty of craftsmanship, and the elegance of modern fashion in every piece we create.',
+      stepsHeading: 'From Material to Masterpiece',
+      steps: [
+        { num: '01', title: 'The Materials', body: 'We begin with cotton and carefully chosen fabrics that form the foundation of our garments.' },
+        { num: '02', title: 'The Transformation', body: 'We explore the process of turning raw materials into beautiful textiles through preparation, weaving, and fabric-making.' },
+        { num: '03', title: 'The Craftsmanship', body: 'Every garment takes shape through thoughtful design, cutting, sewing, and attention to detail.' },
+        { num: '04', title: 'The Final Creation', body: 'The journey ends with a finished piece, bringing together materials, craftsmanship, and contemporary design.' },
+      ],
+    },
+    footer: {
+      brandName: 'ASTU CHIFFON',
+      brandSub: 'Astu ሽፎን እና ሀበሻ',
+      desc: ' House celebrating handwoven shemma, sheer shefon, and timeless silhouette architecture.',
+      navTitle: 'Navigation',
+      contactTitle: 'Contact Us',
+      phoneLabel: 'Phone',
+      phone: '0982849461',
+      address: '22 Haya Hulet, Addis Ababa, near Awraris Tsedi Plaza and Zeka 22 Mall',
+      mapsLink: 'Open in Google Maps',
+      tiktokBiz: 'TikTok Business',
+      tiktokPersonal: 'TikTok Personal',
+      instagram: 'Instagram',
+      facebook: 'Facebook',
+      youtube: 'YouTube',
+      journalTitle: 'Private Journal',
+      emailPlaceholder: 'Email address',
+      joinBtn: 'Join',
+      joinedMsg: 'Thank you for joining the Atelier journal.',
+      copyright: '© 2026 Astu Chiffon (Astu ሽፎን እና ሀበሻ). All rights reserved.',
+      tagline: 'From the Earth, Woven into Art',
+    },
+  },
+  am: {
+    nav: {
+      brandName: 'አስቱ ሽፎን',
+      brandTag: 'የኢትዮጵያ ጥጥ እና ሽፎን ዲዛይን',
+      home: 'መነሻ',
+      process: 'አሰራራችን',
+      dresses: 'ቀሚሶች',
+      heritage: 'ስለ እኛ',
+      contact: 'ያግኙን',
+      explore: 'ቀሚሶችን ይመልከቱ',
+    },
+    story: {
+      heroEyebrow: 'አስቱ ሽፎን · የኢትዮጵያ ጥጥ',
+      heroTitle1: 'ከምድር የተገኘ፣',
+      heroTitle2: 'በጥበብ የተሸመነ።',
+      heroSub: 'የኢትዮጵያን ጥጥ፣ የእጅ ጥበብ እና ዘመናዊ የዲዛይን ጉዞ ይመልከቱ።',
+      scrollCue: 'ለማየት ወደ ታች ይሸብልሉ',
+      stagePrefix: 'ደረጃ',
+      stages: [
+        {
+          eyebrow: 'ደረጃ 01 — ጥሬ ጥጥ',
+          title: 'ሁሉም ከተፈጥሮ ይጀምራል።',
+          subtitle: 'የተፈጥሮ የጥጥ ፍሬዎች ተከፍተው ወደ ቀላል ቃጫዎች ይለያያሉ።',
+        },
+        {
+          eyebrow: 'ደረጃ 02 — የጥጥ ማቀነባበሪያ',
+          title: 'በጥበብ የተጣራ።',
+          subtitle: 'የጥጥ ቃጫዎች በዘመናዊ ማሽኖች ተጣርተው ወደ ንጹህ ክርነት ይዘጋጃሉ።',
+        },
+        {
+          eyebrow: 'ደረጃ 03 — መፍተል',
+          title: 'እያንዳንዱ ክር ታሪክ አለው።',
+          subtitle: 'የሚሽከረከሩ መፍተያዎች ስስ የጥጥ ቃጫዎችን ወደ ቀጣይነት ያለው ክር ይቀይራሉ።',
+        },
+        {
+          eyebrow: 'ደረጃ 04 — ሽመና',
+          title: 'ባህል ከትክክለኛነት ጋር።',
+          subtitle: 'ቋሚ እና አግዳሚ ክሮች ተጠላልፈው ስስ የኢትዮጵያ ሽፎን እና ሸማ ይፈጥራሉ።',
+        },
+        {
+          eyebrow: 'ደረጃ 05 — የቀሚስ ስፌት',
+          title: 'ለዘላለም በጥበብ የተሰራ።',
+          subtitle: 'የተሸመነው ጨርቅ ወደ ውብ የኢትዮጵያ ቀሚስ ቅርጽ ይቀየራል።',
+        },
+        {
+          eyebrow: 'ደረጃ 06 — የመጨረሻው ቀሚስ',
+          title: 'የኢትዮጵያ ቅርስ በአዲስ መልክ።',
+          subtitle: 'ቀሚሱን 360 ዲግሪ ለማዞር ወደ ታች ይሸብልሉ።',
+        },
+      ],
+    },
+    dresses: {
+      eyebrow: '360° የቀሚስ ማሳያ ስቱዲዮ',
+      title1: 'የኢትዮጵያ ቀሚስ',
+      title2: '3D ስብስብ',
+      intro: 'ቀሚሱን በ360° ሲሽከረከር ይመልከቱ፤ ወደ ግራና ቀኝ ይጎትቱ፣ ያቅርቡ ወይም የስፌት ዝርዝሮችን ይመልከቱ።',
+      autoOn: 'በራሱ ማዞር: በርቷል',
+      autoOff: 'በራሱ ማዞርን ቀጥል',
+      views: { Front: 'ፊት', Left: 'ግራ', Back: 'ጀርባ', Right: 'ቀኝ' },
+      fabricLabel: 'ጨርቅ',
+      embroideryLabel: 'ጥልፍ እና ስፌት',
+      hoverLabel: 'ዝርዝሮችን ለማየት ይጠቁሙ',
+      dragHint: '360° ለማዞር ወደ ግራ/ቀኝ ይጎትቱ · ለማቅረብ ያሽከርክሩ',
+      habeshaGalleryTitle: 'የሀበሻ ቀሚስ ስብስብ ፎቶዎች',
+      habeshaGallerySub: 'ከግራ ወደ ቀኝ የሚንቀሳቀስ · ለማቆም ይጠቁሙ',
+      zones: [
+        { title: 'አንገት', detail: 'በእጅ በተጠናቀቀ የጥጥ ጠርዝ የተዋበ አራት ማዕዘን የአንገት ቅርጽ።' },
+        { title: 'እጅጌ', detail: 'ውብ እጥፋት እና ስስ ጠርዝ ያለው የተሰበሰበ እጅጌ።' },
+        { title: 'ወገብ', detail: 'የቀሚሱን የላይኛው ክፍል ከታችኛው ጋር የሚያስተሳስር የወገብ ቅርጽ።' },
+        { title: 'ጥበብ ጠርዝ', detail: 'ሶስት እርከን ያለው እና በሚያምር ሁኔታ የሚወዛወዝ የአበባ ሽፎን ቀሚስ።' },
+      ],
+      items: {
+        shefon: {
+          category: 'የሽፎን ስብስብ',
+          name: 'የሽፎን ኩቱር ማሳያ',
+          description: 'ቀላል የጥጥ-ሽፎን ጨርቅ፣ ውብ የአበባ ህትመት እና በሚያምር ሁኔታ የሚወዛወዝ ዘመናዊ የሽፎን ቀሚስ።',
+          fabric: 'ቀላል የጥጥ እና ሽፎን ድብልቅ',
+          embroidery: 'የተሰበሰበ እጅጌ እና ሶስት እርከን ያለው ቀሚስ',
+        },
+        'habesha-kemis': {
+          category: 'የሀበሻ ቀሚስ',
+          name: 'ባህላዊ እና ዘመናዊ የሀበሻ ቀሚስ',
+          description: 'በባህላዊ የኢትዮጵያ ሽመና ከተፈጥሮ ጥጥ የተሰራ፣ በደረትና በጠርዙ ላይ በእጅ የተጠለፈ ጥበብ ያለው።',
+          fabric: '100% የተፈጥሮ የኢትዮጵያ ሸማ ጥጥ',
+          embroidery: 'በእጅ የተሸመነ የአልማዝ ቅርጽ ጥበብ',
+        },
+      },
+    },
+    heritage: {
+      eyebrow: 'ስለ እኛ · ከጥበባችን በስተጀርባ ያለው ታሪክ',
+      title1: 'እያንዳንዱ ክር',
+      title2: 'ታሪክ አለው።',
+      subtitle: 'ከኢትዮጵያ ጥጥ እስከ ዘመናዊ ፋሽን።',
+      p1: 'ከእያንዳንዱ ልብስ በስተጀርባ ሂደት፣ የባለሙያ እጆች እና ሊነገር የሚገባው ታሪክ አለ።',
+      p2: 'በአስቱ (የሽፎን ዋና ስራ አስፈጻሚ) የሚመራው ራዕያችን የኢትዮጵያን የእጅ ጥበብ ውበት ወደ ዘመናዊ አለባበስ ማምጣት ነው። ጥራትን፣ ፈጠራን እና የእጅ ስራን ዋጋ የሚያከብሩ ልብሶችን ለመስራት ከጥጥ እና በጥንቃቄ ከተመረጡ ጨርቆች ጋር እንሰራለን።',
+      p3: 'ነገር ግን ፋሽን ከተጠናቀቀ ቀሚስ በላይ እንደሆነ እናምናለን። ለዚህም ነው ከመድረክ በስተጀርባ ያለውን ሙሉ ጉዞ ልናሳይዎ የምንፈልገው፡ ቁሳቁሶቻችን ከየት እንደሚመጡ፣ ጥጥ እንዴት ወደ ጨርቅ እንደሚቀየር፣ ባህላዊ የሽመና እና የልብስ አሰራር ዘዴዎች እንዴት ጥቅም ላይ እንደሚውሉ እና እያንዳንዱ ስራ እንዴት ወደ ተጠናቀቀ ልብስ እንደሚሸጋገር።',
+      p4: 'ከሚለብሱት ልብስ በስተጀርባ ያሉትን እጆች፣ ዝርዝሮች፣ ፈጠራ እና ትጋት እንዲያዩ እንፈልጋለን።',
+      mission: 'ተልዕኳችን ቀላል ነው፡ በምንሰራው እያንዳንዱ ልብስ ውስጥ የቁሳቁሶቻችንን ታሪክ፣ የእጅ ጥበብን ውበት እና የዘመናዊ ፋሽንን ውበት ማገናኘት።',
+      stepsHeading: 'ከቁሳቁስ እስከ ድንቅ ስራ',
+      steps: [
+        { num: '01', title: 'ቁሳቁሶቹ', body: 'የልብሶቻችን መሰረት በሆነው ጥጥ እና በጥንቃቄ በተመረጡ ጨርቆች እንጀምራለን።' },
+        { num: '02', title: 'ሽግግሩ', body: 'ጥሬ ቁሳቁሶችን በዝግጅት፣ በሽመና እና በጨርቅ አሰራር ወደ ውብ ጨርቅ የመቀየር ሂደትን እንዳስሳለን።' },
+        { num: '03', title: 'የእጅ ጥበቡ', body: 'እያንዳንዱ ልብስ በታሰበበት ዲዛይን፣ መቁረጥ፣ ስፌት እና ለዝርዝር ትኩረት በመስጠት ቅርጽ ይይዛል።' },
+        { num: '04', title: 'የመጨረሻው ፈጠራ', body: 'ጉዞው ቁሳቁሶችን፣ የእጅ ጥበብን እና ዘመናዊ ዲዛይንን አንድ ላይ በሚያመጣ የተጠናቀቀ ስራ ይጠናቀቃል።' },
+      ],
+    },
+    footer: {
+      brandName: 'አስቱ ሽፎን',
+      brandSub: 'Astu Chiffon · ሽፎን እና ሀበሻ',
+      desc: 'በእጅ የተሸመነ ሸማን፣ ስስ ሽፎንን እና ዘመናዊ የኢትዮጵያ የቀሚስ ጥበብን የሚያከብር የፋሽን ቤት።',
+      navTitle: 'ማውጫ',
+      contactTitle: 'ያግኙን',
+      phoneLabel: 'ስልክ',
+      phone: '0982849461',
+      address: '22 ሀያ ሁለት፣ አዲስ አበባ፣ ከአውራሪስ ጸዲ ፕላዛ እና ዘካ 22 ሞል አጠገብ',
+      mapsLink: 'በጉግል ካርታ ይመልከቱ',
+      tiktokBiz: 'ቲክቶክ (ቢዝነስ)',
+      tiktokPersonal: 'ቲክቶክ (የግል)',
+      instagram: 'ኢንስታግራም',
+      facebook: 'ፌስቡክ',
+      youtube: 'ዩቲዩብ',
+      journalTitle: 'የዜና መጽሔት',
+      emailPlaceholder: 'ኢሜይል ያስገቡ',
+      joinBtn: 'ይመዝገቡ',
+      joinedMsg: 'ስለተመዘገቡ እናመሰግናለን።',
+      copyright: '© 2026 አስቱ ሽፎን (Astu Chiffon)። መብቱ በህግ የተጠበቀ ነው።',
+      tagline: 'ከምድር የተገኘ፣ በጥበብ የተሸመነ',
+    },
+  },
+};
+
+export function useI18n() {
+  const t = computed(() => messages[lang.value]);
+  const setLang = (next) => {
+    lang.value = next === 'am' ? 'am' : 'en';
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('lang', lang.value);
+    }
+  };
+  return { lang, t, setLang };
+}

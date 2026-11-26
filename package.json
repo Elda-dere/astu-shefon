@@ -1,0 +1,25 @@
+{
+  "name": "atelier-elan-thread-to-masterpiece",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 8080"
+  },
+  "dependencies": {
+    "@tresjs/cientos": "^5.13.0",
+    "@tresjs/core": "^5.12.0",
+    "gsap": "^3.15.1",
+    "lenis": "^1.1.18",
+    "three": "^0.187.0",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "tailwindcss": "^4.3.5",
+    "vite": "^6.0.11"
+  }
+}
